@@ -49,10 +49,10 @@ return (
                   {users.data.length ? (
                     users.data.map(({ id, name, email, created_at }) => (
                       <tr key={id} className="border-b">
-                        <td className="p-3 text-[var(--muted-foreground)]">{id}</td>
-                        <td className="p-3 text-[var(--muted-foreground)]">{name}</td>
-                        <td className="p-3 text-[var(--muted-foreground)]">{email}</td>
-                        <td className="p-3 text-[var(--muted-foreground)]">
+                        <td className="p-3 text-[var(-foreground)]">{id}</td>
+                        <td className="p-3 text-[var(-foreground)]">{name}</td>
+                        <td className="p-3 text-[var(-foreground)]">{email}</td>
+                        <td className="p-3 text-[var(-foreground)]">
                           {new Date(created_at).toLocaleDateString()}
                         </td>
                         <td className="p-3 flex gap-2 justify-center">

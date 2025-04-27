@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { router } from "@inertiajs/react";
-import { Toaster, toast } from "sonner";
+import {  toast } from "sonner";
  
 interface Post {
   id?: number;
@@ -86,9 +86,9 @@ export default function PostFormModal({ isOpen, closeModal, post }: Props) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-[var(--background)] bg-opacity-50 z-50">
-      <div className="bg-[var(--card)] p-6 rounded-[var(--radius)] shadow-lg w-full max-w-xl">
-        <h2 className="text-[var(--foreground)] text-lg font-semibold mb-4">
+    <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-50">
+      <div className="bg-[var(--card)] p-6 rounded-lg shadow-lg w-96 relative z-50 pointer-events-auto">
+        <h2 className="text-lg font-semibold mb-4 text-[var(--card-foreground)]">
           {post ? "Edit Post" : "Add Post"}
         </h2>
         <form onSubmit={handleSubmit} encType="multipart/form-data">
@@ -97,6 +97,7 @@ export default function PostFormModal({ isOpen, closeModal, post }: Props) {
             <input
               type="text"
               name="title"
+              placeholder="Enter post title"
               value={formData.title}
               onChange={handleChange}
               className="w-full border border-[var(--border)] rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
@@ -108,6 +109,7 @@ export default function PostFormModal({ isOpen, closeModal, post }: Props) {
             <textarea
               name="content"
               value={formData.content}
+              placeholder="Enter post content"
               onChange={handleChange}
               className="w-full border border-[var(--border)] rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
               required
@@ -137,13 +139,13 @@ export default function PostFormModal({ isOpen, closeModal, post }: Props) {
             <button
               type="button"
               onClick={closeModal}
-              className="px-4 py-2 bg-[var(--destructive)] text-[var(--primary-foreground)] rounded-lg hover:bg-[var(--destructive)]"
+              className="px-4 py-2 bg-[var(--muted)] text-[var(--muted-foreground)] rounded hover:bg-[var(--muted-foreground)] hover:text-[var(--muted)] transition]"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-[var(--primary)] text-[var(--primary-foreground)] rounded-lg hover:bg-[var(--primary)]"
+              className="px-4 py-2 bg-[var(--primary)] text-[var(--primary-foreground)] rounded hover:bg-[var(--primary-foreground)] hover:text-[var(--primary)] transition"
             >
               {post ? "Update" : "Create"}
             </button>

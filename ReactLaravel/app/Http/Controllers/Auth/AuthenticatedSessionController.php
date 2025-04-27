@@ -31,6 +31,10 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
+        if (Auth::user()->id !== 1) {
+            Auth::logout();
+            return redirect()->route('login')->withErrors(['email' => 'You are not authorized to log in.']);
+        }
         $request->session()->regenerate();
 
         return redirect()->intended(route('dashboard', absolute: false));
